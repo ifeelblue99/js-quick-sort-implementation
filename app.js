@@ -1,18 +1,15 @@
 let dumy = [8, 7, 1, 5, 3]
 
-function quiclkSort(arr) {
-  console.log(arr)
+function quickSort(arr) {
+
   if(arr.length <= 1) return arr
   
-  let pivot = arr.shift()
+  let pivot = arr[0]
   const greater = []
   const less = []
   
-  for (let i = 0; i < arr.length; i++) {
-    arr[i] > pivot ? greater.push(arr[i]) : less.push(arr[i])
+  for (let i = 1; i < arr.length; i++) {
+    arr[i] <= pivot ? less.push(arr[i]) : greater.push(arr[i])
   }
-  
-  return quiclkSort(less) + [pivot] + quiclkSort(greater)
+  return quickSort(less) + [pivot] + quickSort(greater)
 }
-// driver code
-console.log("sorted.",quiclkSort(dumy));
